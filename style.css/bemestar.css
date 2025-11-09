@@ -1,0 +1,381 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box, 100vh;  
+}
+
+#toggle-dark-mode{
+    padding: 2px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.0);
+    font-size: 20pxpx;
+}
+
+.header1{
+    margin: -5px; /*serve para tirar a margem superior do body acima do header*/
+    font-size: 20px; /*Serve para controlar o tamanho do texto*/
+    font-family: arial; /*Refere-se ao tipo de letra utilizada*/
+    margin-bottom: 10px;
+    position: fixed;
+    top: 0;
+    width: 101%;
+    z-index: 1000;
+}
+#navh1:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+nav{
+    display: flex;
+    justify-content:/*define como os itens são alinhados ao longo do eixo principal.*/ space-around;
+    align-items: center;/*Ela define como os itens são alinhados ao longo do eixo transversal */
+    background-image: linear-gradient(rgb(38, 121, 121), rgb(0, 113, 128), rgb(75, 151, 98));
+    height: 80px; /*é usada para definir a altura da área de conteúdo de um elemento HTML*/
+}
+nav ul{
+    list-style: none; /*tira a bolinha do lado do nome na lista*/
+    display: flex; /*faz com que a lista fique de forma horizontal*/
+}
+nav li{
+    letter-spacing: 3px; /*espaçamento entre cada letra*/
+    margin-left: 70px; /* espaçamento entre cada item da lista*/
+    margin-top: 15px;
+}
+nav li:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+nav a{
+    text-decoration: none; /*tira a linha debaixo do que está escrito*/
+    color: white;
+}
+nav a:hover{ /*hover é usado para aplicar estilos a um elemento quando o cursor do mouse passa sobre ele*/
+    cursor: pointer;/*mudar o estilo do cursor ao passar por cima*/
+    color: aqua ;
+}
+a img{
+    width: 60px; /*é usada para definir a largura da área de conteúdo de um elemento HTML*/
+    height: 60px; /* é usada para definir a altura de um elemento HTML*/
+}
+a img:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+#btn-login-cadastro:hover{
+    cursor: pointer;
+    color: cyan;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+
+#btn-login-cadastro{
+    background-color: rgba(0, 113, 128,0.1);
+    border:none;
+    border-color: rgb(0, 113, 128);
+    color: white;
+    font-size: 16px; 
+    padding: 4px;
+}
+
+img#topo-img {
+    width: 100%; /* ou qualquer tamanho */
+    height: 300px; /* mantém a proporção da imagem */
+    object-fit: cover; 
+    margin-top: -5px;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+
+
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+}
+
+.header {
+    text-align: center;
+    padding: 40px 0;
+    background: linear-gradient(to right,rgb(38, 121, 121), rgb(0, 113, 128), rgb(75, 151, 98));
+    color: #fff;
+    border-radius: 15px 15px 0 0;
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.secao {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.secao h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    color: #4a4a4a;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.secao h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #ffaa00;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.secao-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.cartao-info {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    width: calc(33% - 40px);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartao-info:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cartao-info img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.conteudo-cartao {
+    padding: 25px;
+    flex-grow: 1;
+    /* Faz o conteúdo ocupar o espaço restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo-cartao h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.conteudo-cartao p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.link-saiba-mais {
+    display: inline-block;
+    margin-top: auto;
+    /* Empurra o botão para baixo */
+    padding: 12px 25px;
+    background-color: #6a82fb;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+    /* Alinha o botão à esquerda */
+}
+
+.link-saiba-mais:hover {
+    background-color: #516be8;
+}
+
+.curiosidades {
+    background-color: #fff8e1;
+    /* Amarelo muito clarinho */
+    padding: 50px;
+    border-radius: 12px;
+    margin-top: 60px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.curiosidades h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.curiosidades .item-curiosidade {
+    background-color: #ffeeb3;
+    /* Amarelo um pouco mais escuro */
+    padding: 20px 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: flex-start;
+}
+
+.curiosidades .item-curiosidade:last-child {
+    margin-bottom: 0;
+}
+
+.curiosidades .item-curiosidade .icone {
+    font-size: 2em;
+    margin-right: 20px;
+    color: #ffaa00;
+}
+
+.curiosidades .item-curiosidade h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #4a4a4a;
+}
+
+.curiosidades .item-curiosidade p {
+    font-size: 1.05em;
+    color: #666;
+}
+
+.perguntas-frequentes {
+    background-color: #e6f7ff;
+    /* Azul muito clarinho */
+    padding: 50px;
+    border-radius: 12px;
+    margin-top: 60px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.perguntas-frequentes h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pergunta-item {
+    margin-bottom: 25px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.pergunta-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.4em;
+}
+
+.pergunta-item p {
+    color: #555;
+    font-size: 1.05em;
+}
+
+
+footer {
+    background-image: linear-gradient(rgb(38, 121, 121), rgb(0, 113, 128), rgb(75, 151, 98));
+    color: black;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+
+/*----------------------------------------BOTAO HAMBURGUER-----------------------------------*/
+
+@media (max-width: 768px) {
+    nav.menu_superior {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    nav.menu_superior > ul,
+    .login-cadastro,
+    #toggle-dark-mode,
+    #user-info {
+        display: none;
+        width: 100%;
+    }
+
+    nav.menu_superior.active > ul,
+    nav.menu_superior.active .login-cadastro,
+    nav.menu_superior.active #toggle-dark-mode,
+    nav.menu_superior.active #user-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    nav.menu_superior ul {
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 0;
+    }
+
+    nav.menu_superior ul li {
+        margin: 0;
+    }
+
+    .login-cadastro a button,
+    #toggle-dark-mode,
+    #logout-btn {
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    /* Botão hamburguer - você deve ter o JS ativando a classe .active no nav */
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+        align-self: flex-end;
+        margin-top: -40px;
+    }
+}

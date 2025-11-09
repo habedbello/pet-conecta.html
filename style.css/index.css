@@ -1,0 +1,344 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box,;  
+}
+
+
+header{
+    margin: -5px; /*serve para tirar a margem superior do body acima do header*/
+    font-size: 20px; /*Serve para controlar o tamanho do texto*/
+    font-family: arial; /*Refere-se ao tipo de letra utilizada*/
+    margin-bottom: 10px;
+    position: fixed;
+    top: 0;
+    width: 101%;
+    z-index: 1000;
+}
+#navh1:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+nav{
+    display: flex;
+    justify-content:/*define como os itens são alinhados ao longo do eixo principal.*/ space-around;
+    align-items: center;/*Ela define como os itens são alinhados ao longo do eixo transversal */
+    background-image: linear-gradient(rgb(38, 121, 121), rgb(0, 113, 128), rgb(75, 151, 98));
+    height: 80px; /*é usada para definir a altura da área de conteúdo de um elemento HTML*/
+}
+nav ul{
+    list-style: none; /*tira a bolinha do lado do nome na lista*/
+    display: flex; /*faz com que a lista fique de forma horizontal*/
+}
+nav li{
+    letter-spacing: 3px; /*espaçamento entre cada letra*/
+    margin-left: 70px; /* espaçamento entre cada item da lista*/
+    margin-top: 15px;
+}
+nav li:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+nav a{
+    text-decoration: none; /*tira a linha debaixo do que está escrito*/
+    color: white;
+}
+nav a:hover{ /*hover é usado para aplicar estilos a um elemento quando o cursor do mouse passa sobre ele*/
+    cursor: pointer;/*mudar o estilo do cursor ao passar por cima*/
+    color: aqua ;
+}
+a img{
+    width: 60px; /*é usada para definir a largura da área de conteúdo de um elemento HTML*/
+    height: 60px; /* é usada para definir a altura de um elemento HTML*/
+}
+a img:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+#btn-login-cadastro:hover{
+    cursor: pointer;
+    color: cyan;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+
+#btn-login-cadastro{
+    background-color: rgba(0, 113, 128,0.1);
+    border:none;
+    border-color: rgb(0, 113, 128);
+    color: white;   
+    font-size: 16px; 
+    padding: 4px;
+    gap: 10px;
+}
+
+img#topo-img {
+    width: 100%; /* ou qualquer tamanho */
+    height: 300px; /* mantém a proporção da imagem */
+    object-fit: cover; 
+    margin-top: 80px;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+
+
+
+/* parte das imagens de adoção dos pts */
+.adoção{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin: 20px;
+    border-style: double;
+    padding: 30px;
+    border-radius: 5px;
+    border: none;
+}
+.adoção:hover{
+    background-color: rgb(75, 151, 98);
+    transition: 2s;  
+}
+#img1, #img2, #img3, #img4{
+    width: 250px ;
+    height: 320px;
+    object-fit: fill;
+    border-style: groove;
+    border: none;
+}
+
+#img1:hover, #img2:hover, #img3:hover, #img4:hover{
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+    border: rgb(238, 255, 0) solid;
+    transition: 1s;
+}
+.doação-h1{
+    color: rgb(75, 151, 98);
+    text-align: center;
+}
+.doação-h3{
+    text-align: center; 
+    color: rgb(3, 117, 117);
+}
+
+/*final da aba de adoção */
+
+
+/*Início da aba DOAÇÃo index*/
+
+.sobrenos {
+    display: flex; /* Usa flexbox para um layout flexível */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    justify-content: space-around; /* Distribui o espaço ao redor dos itens */
+    padding: 40px 20px; /* Adiciona um preenchimento (padding) ao redor da seção */
+    background-image: linear-gradient(45deg, rgb(250, 245, 245), rgb(255, 255, 255));
+    font-family: Arial, sans-serif; /* Especifica uma fonte comum */
+    color: #333; /* Cor de texto mais escura para melhor legibilidade */
+}
+
+/* --- Estilos para a área de conteúdo de texto --- */
+.doacao {
+    flex: 1; /* Permite que a div doacao cresça e diminua */
+    max-width: 600px; /* Limita sua largura máxima */
+    margin-right: 30px; /* Espaço entre o texto e a imagem */
+    text-align: justify; /* Justifica o texto para uma aparência mais limpa */
+}
+
+.sobrenosh1 {
+    font-size: 1.5em; /* Tamanho da fonte maior para o título principal */
+    color: #039227; /* Uma cor distinta para o título */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    text-align: left; /* Alinha o título à esquerda */
+}
+
+.doacao p {
+    font-size: 20px; /* Tamanho da fonte ligeiramente maior para os parágrafos */
+    line-height: 1.6; /* Melhora a legibilidade com mais espaçamento entre as linhas */
+    margin-bottom: 15px; /* Espaço entre os parágrafos */
+    color: #89a889;
+}
+
+/*  Estilos para o contêiner da imagem  */
+.imgsobrenos {
+    flex: 0 0 auto; /* Não permite que o contêiner da imagem cresça ou diminua */
+    max-width: 400px auto; /* Limita a largura máxima do contêiner da imagem */
+    text-align: center; /* Centraliza a imagem se ela for menor que seu contêiner */
+    overflow: hidden;
+}
+.bordaimg{
+    position: absolute;
+    display: flex;
+    width: 450px;
+    height: 350px;
+    border: rgb(223, 233, 88);
+    border-style: groove;
+    margin-top: 35px;
+    margin-left: 78px;
+    overflow: visible;
+}
+
+.imgsobrenos img {
+    max-width: 100%; /* Garante que a imagem seja responsiva e se ajuste ao seu contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 8px; /* Cantos ligeiramente arredondados para a imagem */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidade */
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.imgsobrenos img:hover {
+    transform: scale(1.05) translate(-2px, -2px); /* Aumenta 5% e move 2px para cima e para a esquerda */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra um pouco mais forte */
+}
+#btnsobrenos{
+    font-size: 15px;
+    background-color: white;
+    color: #039227;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    border-color: #039227;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 150px;
+}
+#btnsobrenos:hover{
+    background-color: #039227;
+    color:white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: 0.5s;
+}
+#btnsobrenos span { 
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* final da section DOAÇÃo index */
+
+
+
+footer{
+    background-image: linear-gradient(rgb(38, 121, 121), rgb(0, 113, 128), rgb(75, 151, 98));
+    color: black;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+
+
+
+
+/* Telas menores que 1024px (tablets e notebooks pequenos) */
+@media (max-width: 1024px) {
+    nav ul {
+        gap: 20px;
+        margin-left: 10px;
+    }
+
+    .adoção {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .sobrenos {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .doacao {
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .bordaimg {
+        display: none; /* Remove a borda decorativa se necessário */
+    }
+
+    .imgsobrenos img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
+/* Telas menores que 768px (celulares e tablets em modo retrato) */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    .login-cadastro {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    #topo-img {
+        height: 200px;
+    }
+
+    #img1, #img2, #img3, #img4 {
+        width: 90%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    .adoção {
+        padding: 20px 10px;
+    }
+
+    .sobrenos {
+        padding: 20px;
+    }
+
+    #btnsobrenos {
+        width: 100%;
+        max-width: 200px;
+        margin-top: 20px;
+    }
+}
+
+
+/* Telas menores que 480px (celulares pequenos) */
+@media (max-width: 480px) {
+    .menu_superior a.logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+    #btn-login-cadastro {
+        font-size: 14px;
+        padding: 5px;
+        width: 100%;
+    }
+
+    .sobrenosh1 {
+        font-size: 1.2em;
+    }
+
+    .doacao p {
+        font-size: 16px;
+    }
+
+    footer {
+        font-size: 14px;
+        padding: 15px;
+    }
+}
+
+
+

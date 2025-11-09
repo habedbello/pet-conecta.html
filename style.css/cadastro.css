@@ -1,0 +1,214 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+}
+
+#toggle-dark-mode{
+    padding: 2px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.0);
+    font-size: 20pxpx;
+}
+
+header{
+    margin: -5px; /*serve para tirar a margem superior do body acima do header*/
+    font-size: 20px; /*Serve para controlar o tamanho do texto*/
+    font-family: arial; /*Refere-se ao tipo de letra utilizada*/
+    margin-bottom: 10px;
+    position: fixed;
+    top: 0;
+    width: 101%;
+    z-index: 1000;
+}
+#navh1:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+nav{
+    display: flex;
+    justify-content:/*define como os itens são alinhados ao longo do eixo principal.*/ space-around;
+    align-items: center;/*Ela define como os itens são alinhados ao longo do eixo transversal */
+    background-image: linear-gradient(rgb(38, 121, 121), rgb(0, 113, 128), rgb(75, 151, 98));
+    height: 80px; /*é usada para definir a altura da área de conteúdo de um elemento HTML*/
+}
+nav ul{
+    list-style: none; /*tira a bolinha do lado do nome na lista*/
+    display: flex; /*faz com que a lista fique de forma horizontal*/
+    margin-top: 15px;
+}
+nav li{
+    letter-spacing: 3px; /*espaçamento entre cada letra*/
+    margin-left: 70px; /* espaçamento entre cada item da lista*/
+}
+nav li:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+nav a{
+    text-decoration: none; /*tira a linha debaixo do que está escrito*/
+    color: white;
+}
+nav a:hover{ /*hover é usado para aplicar estilos a um elemento quando o cursor do mouse passa sobre ele*/
+    cursor: pointer;/*mudar o estilo do cursor ao passar por cima*/
+    color: aqua ;
+}
+a img{
+    width: 60px; /*é usada para definir a largura da área de conteúdo de um elemento HTML*/
+    height: 60px; /* é usada para definir a altura de um elemento HTML*/
+}
+a img:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+#btn-login-cadastro:hover{
+    cursor: pointer;
+    color: cyan;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); 
+}
+
+#btn-login-cadastro{
+    background-color: rgba(0, 113, 128,0.1);
+    border:none;
+    border-color: rgb(0, 113, 128);
+    color: white;
+    font-size: 16px; 
+    padding: 4px;
+}
+
+
+main{
+    margin-top: 100px;
+}
+
+/*------------------------------------FORMULÁRIO--------------------------------------------------*/
+
+body {
+    font-size: 16px;
+    color: var(--text-color);
+    background-color: #d3d3d3;
+    transition: 0.3s, color 0.3s; 
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;  
+}
+
+
+/* conteúdo principal */
+main {
+    flex: 1; /* Permite que o main ocupe o espaço restante, empurrando o rodapé para baixo */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card {
+    border-radius: 8px; /* Cantos arredondados para os cards */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para os cards */
+    transition: transform 0.5s; /* Transição para efeito de hover */
+}
+.card:hover {
+    transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+}
+
+
+/* Estilos para mensagens de feedback */
+.toast-container {
+    z-index: 1080; /* Garante que o toast apareça acima de outros elementos */
+}
+
+/* Cores específicas para tipos de toast */
+.toast.text-bg-success {
+    --bs-toast-bg: #d4edda;
+    --bs-toast-border-color: #28a745;
+    --bs-toast-color: #155724;
+}
+
+.toast.text-bg-danger {
+    --bs-toast-bg: #f8d7da;
+    --bs-toast-border-color: #dc3545;
+    --bs-toast-color: #721c24;
+}
+
+.toast.text-bg-info {
+    --bs-toast-bg: #d1ecf1;
+    --bs-toast-border-color: #17a2b8;
+    --bs-toast-color: #0c5460;
+}
+.form-control:hover{
+    background-color: #eff0db;
+}
+
+
+/*--------------------------------------- FINAL FORMULÁRIO ------------------------------------------*/
+
+footer{
+    background-image: linear-gradient(rgb(38, 121, 121), rgb(0, 113, 128), rgb(75, 151, 98));
+    color: black;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    line-height: 0.5;
+}
+
+
+/*----------------------------------------BOTAO HAMBURGUER-----------------------------------*/
+
+@media (max-width: 768px) {
+    nav.menu_superior {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    nav.menu_superior > ul,
+    .login-cadastro,
+    #toggle-dark-mode,
+    #user-info {
+        display: none;
+        width: 100%;
+    }
+
+    nav.menu_superior.active > ul,
+    nav.menu_superior.active .login-cadastro,
+    nav.menu_superior.active #toggle-dark-mode,
+    nav.menu_superior.active #user-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    nav.menu_superior ul {
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 0;
+    }
+
+    nav.menu_superior ul li {
+        margin: 0;
+    }
+
+    .login-cadastro a button,
+    #toggle-dark-mode,
+    #logout-btn {
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    /* Botão hamburguer - você deve ter o JS ativando a classe .active no nav */
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+        align-self: flex-end;
+        margin-top: -40px;
+    }
+}

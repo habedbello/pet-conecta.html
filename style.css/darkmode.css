@@ -1,0 +1,578 @@
+
+/*----------------------------------BEM ESTAR----------------------------*/
+
+body.dark-mode {
+    background-color: #121212; /* Fundo escuro */
+    color: #e0e0e0; /* Texto claro para dar pra ler*/
+}
+
+body.dark-mode .header1,
+body.dark-mode .menu_superior {
+    background-color: #1f1f1f; /* escurecer o cabeçalho */
+    color: #e0e0e0;
+    border-bottom: 1px solid #333; 
+}
+
+body.dark-mode #navh1 {
+    color: #e0e0e0; 
+}
+
+body.dark-mode .menu_superior ul li a {
+    color: #e0e0e0; 
+}
+
+body.dark-mode .menu_superior ul li a:hover {
+    color: #bb86fc; 
+}
+
+
+body.dark-mode #toggle-dark-mode {
+    background-color: none;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+body.dark-mode .container .header,
+body.dark-mode .secao {
+    background-color: #1f1f1f; /* Fundo escuro para seções */
+    border: 1px solid #333; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); 
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #e0e0e0; /* Títulos em cor clara */
+}
+
+body.dark-mode p {
+    color: #c0c0c0; 
+}
+
+body.dark-mode .cartao-info {
+    background-color: #2a2a2a; /* Fundo mais escuro para os cartões de informação */
+    border: 1px solid #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .cartao-info h3 {
+    color: #bb86fc; /* Cor de destaque para títulos dos cartões */
+}
+
+body.dark-mode .link-saiba-mais {
+    color: #1d1f1e; /* Outra cor de destaque para links */
+}
+
+body.dark-mode .link-saiba-mais:hover {
+    color: #1f9925; 
+    background-color: #ffffff;
+}
+
+body.dark-mode hr {
+    border-color: #333; /* Linha horizontal mais escura */
+}
+
+body.dark-mode .curiosidades .item-curiosidade {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+}
+
+body.dark-mode .curiosidades .item-curiosidade .icone {
+    background-color: #333;
+    color: #bb86fc; /* Destaque para ícones */
+}
+
+body.dark-mode .perguntas-frequentes .pergunta-item {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+}
+
+body.dark-mode .perguntas-frequentes .pergunta-item h3 {
+    color: #03dac6; 
+}
+
+body.dark-mode footer {
+    background-color: #1f1f1f; 
+    color: #e0e0e0;
+    border-top: 1px solid #333;
+}
+
+body.dark-mode .footer-contact p {
+    color: #c0c0c0; 
+}
+
+/*----------------------------------------------ADOÇÃO--------------------------------------------*/
+
+body.dark-mode {
+    background-color: #121212; /* Fundo escuro principal */
+    color: #e0e0e0; /* Cor do texto padrão mais clara */
+}
+
+/* cabeçalho */
+body.dark-mode .header1,
+body.dark-mode .menu_superior {
+    background-color: #1f1f1f; /* Fundo mais escuro para o cabeçalho */
+    border-bottom: 1px solid #333; 
+}
+
+body.dark-mode #navh1 {
+    color: #e0e0e0; 
+}
+
+body.dark-mode .menu_superior ul li a {
+    color: #e0e0e0; /* Cor dos links do menu */
+}
+
+body.dark-mode .menu_superior ul li a:hover {
+    color: #bb86fc; 
+}
+
+/* Conteúdo principal e seções */
+body.dark-mode .container .header,
+body.dark-mode .secao {
+    background-color: #1f1f1f; /* Fundo escuro para o cabeçalho do container e seções */
+    border: 1px solid #333; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); 
+}
+
+
+/* Botões de ação na seção principal (Quero Adotar/Doar) */
+body.dark-mode .botoes-acao .botao-adocao,
+body.dark-mode .botoes-acao .botao-doar {
+    background-color: #03dac6; /* Cor de destaque para os botões de ação */
+    color: #121212; /* Texto escuro */
+    border: 1px solid #03dac6;
+}
+
+body.dark-mode .botoes-acao .botao-adocao:hover,
+body.dark-mode .botoes-acao .botao-doar:hover {
+    background-color: #018786; /* Destaque mais escuro ao passar o mouse */
+    border: 1px solid #018786;
+}
+
+/* Cartões de animais para adoção */
+body.dark-mode .cartoes-container .cartao {
+    background-color: #2a2a2a; /* Fundo mais escuro para os cartões */
+    border: 1px solid #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .cartoes-container .cartao h3 {
+    color: #bb86fc; /* Cor de destaque para o nome do animal */
+}
+
+body.dark-mode .cartoes-container .cartao .botao-cartao {
+    background-color: #03dac6;
+    color: #121212;
+    border: 1px solid #03dac6;
+}
+
+body.dark-mode .cartoes-container .cartao .botao-cartao:hover {
+    background-color: #018786;
+    border: 1px solid #018786;
+}
+
+/* Seção Como Adotar */
+body.dark-mode .como-adotar ol li {
+    color: #bab8be; /* Texto da lista */
+}
+
+body.dark-mode .como-adotar strong {
+    color: #bb86fc; /* Destaque para o texto em negrito */
+}
+
+body.dark-mode .como-adotar .link-form-adocao {
+    background-color: #bb86fc;
+    color: #121212;
+    border: 1px solid #bb86fc;
+}
+
+body.dark-mode .como-adotar .link-form-adocao:hover {
+    background-color: #9a67ea;
+    border: 1px solid #9a67ea;
+}
+
+body.dark-mode .como-adotar h2{
+    color: #bb86fc;
+}
+body.dark-mode .como-adotar p{
+    color: rgb(255, 255, 255);
+}
+body.dark-mode .como-adotar{
+    background-color: #2a2a2a;
+}
+
+
+/* Linha horizontal */
+body.dark-mode hr {
+    border-color: #333; /* Cor da linha divisória */
+}
+
+/* Seção Doar um Anjo de Quatro Patas */
+body.dark-mode .secao h2{
+    color: #9a67ea;
+}
+body.dark-mode .secao p{
+    color: white;
+}
+body.dark-mode .info-doacao{
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .info-doacao ul li {
+    color: #111111; /* Texto da lista de doação */
+}
+
+body.dark-mode .info-doacao strong {
+    color: #610de7; /* Destaque para o texto em negrito */
+}
+
+body.dark-mode .info-doacao .link-form-doacao {
+    background-color: #bb86fc;
+    color: #121212;
+    border: 1px solid #bb86fc;
+}
+
+body.dark-mode .info-doacao .link-form-doacao:hover {
+    background-color: #a25bca;
+    border: 1px solid #a25bca;
+}
+
+
+/*------------------------------------------INDEX--------------------------------------------*/
+
+body.dark-mode .doação-h1 {
+    color: #e0e0e0; 
+}
+
+body.dark-mode .doação-h3 {
+    color: #c0c0c0; /* Texto suave para o subtítulo */
+}
+
+/* Seção de Adoção */
+body.dark-mode .adoção {
+    border: 1px solid #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Seção "Sobre Nós" (sobrenos) */
+body.dark-mode .sobrenos {
+    border: 1px solid #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(45deg,#2a2a2a);
+}
+
+
+body.dark-mode .sobrenosh1 {
+    color: #8745d8; /* Cor de destaque para o título de doações */
+}
+
+body.dark-mode .doacao p {
+    color: #9b9090; /* Texto dos parágrafos da seção de doação */
+}
+
+body.dark-mode .doacao em {
+    color: #e5e3e7; /* Enfatiza o texto em itálico */
+}
+
+/* Botão "SAIBA MAIS" na seção de doações */
+body.dark-mode #btnsobrenos {
+    background-color: #8745d8; /* Cor de destaque para o botão */
+    color: #f1ebeb; /* Texto escuro no botão */
+    border: 1px solid #8745d8;
+}
+
+body.dark-mode #btnsobrenos:hover {
+    background-color: #5f4091; /* Destaque mais escuro ao passar o mouse */
+    border: 1px solid #6b2dce;
+}
+
+
+
+/*---------------------------------CADASTRO------------------------------------------------*/
+
+/* Título da página de cadastro */
+body.dark-mode .text-center.mb-4 {
+    color: #e0e0e0; /* Cor do título centralizada */
+}
+
+/* Card do formulário de cadastro */
+body.dark-mode .card.p-4.mx-auto {
+    background-color: #1f1f1f; /* Fundo escuro para o card */
+    border: 1px solid #333; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+}
+
+/* Labels dos campos do formulário */
+body.dark-mode .form-label {
+    color: #e0e0e0; /* Cor do texto das labels */
+}
+
+/* Campos de input do formulário (texto, data, email, telefone, etc.) */
+body.dark-mode .form-control {
+    background-color: #2a2a2a; /* Fundo escuro para os inputs */
+    color: #e0e0e0; 
+    border: 1px solid #444; 
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #a0a0a0; 
+}
+
+/* Select de Sexo */
+body.dark-mode .form-select {
+    background-color: #2a2a2a; 
+    color: #e0e0e0; 
+    border: 1px solid #444; 
+    /* Para a seta do select ficar visível no dark mode */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e0e0e0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+body.dark-mode .form-select option {
+    background-color: #2a2a2a; 
+    color: #e0e0e0; 
+}
+
+/* Mensagens de feedback de validação */
+body.dark-mode .invalid-feedback {
+    color: #ff6b6b; 
+}
+
+/* Botão Enviar */
+body.dark-mode .btn-primary {
+    background-color: #03dac6; 
+    border-color: #03dac6;
+    color: #121212; 
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #018786; 
+    border-color: #018786;
+}
+
+/* Botão Limpar Tela */
+body.dark-mode .btn-secondary {
+    background-color: #444; 
+    border-color: #444;
+    color: #e0e0e0; 
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: #555; 
+    border-color: #555;
+}
+
+
+body.dark-mode .toast {
+    background-color: #2a2a2a; 
+    color: #e0e0e0; 
+    border: 1px solid #444; 
+}
+
+body.dark-mode .toast-header {
+    background-color: #333; /* Fundo do cabeçalho do toast */
+    color: #e0e0e0; 
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .toast-header strong {
+    color: #e0e0e0; /* Cor do texto "Notificação" */
+}
+
+body.dark-mode .toast-body {
+    color: #c0c0c0; /* Cor do corpo da mensagem do toast */
+}
+
+
+/*--------------------------------------------LOGIN-------------------------------*/
+
+
+/* Título da página de login */
+body.dark-mode .text-center.mb-4 {
+    color: #e0e0e0; /* Cor do título centralizado */
+}
+
+/* Card do formulário de login */
+body.dark-mode .card.p-4.mx-auto {
+    background-color: #1f1f1f; /* Fundo escuro para o card de login */
+    border: 1px solid #333; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+}
+
+/* Labels dos campos do formulário */
+body.dark-mode .form-label {
+    color: #e0e0e0; 
+}
+
+/* Campos de input do formulário */
+body.dark-mode .form-control {
+    background-color: #2a2a2a; 
+    color: #e0e0e0; 
+    border: 1px solid #444; 
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #a0a0a0; /* Cor do placeholder */
+}
+
+/* Mensagens de feedback de validação  */
+body.dark-mode .invalid-feedback {
+    color: #ff6b6b;
+}
+
+/* Botão "Entrar" */
+body.dark-mode .btn-primary {
+    background-color: #03dac6; 
+    border-color: #03dac6;
+    color: #121212; 
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #018786; 
+    border-color: #018786;
+}
+
+/* Botão "Limpar" */
+body.dark-mode .btn-secondary {
+    background-color: #444; 
+    border-color: #444;
+    color: #e0e0e0; 
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: #555; 
+    border-color: #555;
+}
+
+/* Link Cadastre-se! */
+body.dark-mode .text-center a {
+    color: #bb86fc; 
+}
+
+body.dark-mode .text-center a:hover {
+    color: #9a67ea; 
+}
+
+
+/*-----------------------------------------SOBRE NÓS--------------------------------------/*
+
+
+/* Seção principal "Sobre Nós" */
+body.dark-mode section#sobre-nos.sobre-nos {
+    background-color: #121212; /* Fundo escuro para a seção principal */
+    color: #e0e0e0; /* Cor do texto padrão da seção */
+}
+
+/* Container dentro da seção */
+body.dark-mode .sobre-nos .container {
+    background-color: #121212; 
+}
+
+/* Cabeçalho da seção */
+body.dark-mode .sobre-nos__cabecalho {
+    background-color: #1f1f1f; 
+    border-bottom: 1px solid #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); 
+    color: #e0e0e0;
+}
+
+body.dark-mode .sobre-nos__cabecalho h2 {
+    color: #e0e0e0; /* Cor do título principal "Sobre a PET CONECTA" */
+}
+
+body.dark-mode .sobre-nos__cabecalho h2 em {
+    color: #bb86fc; /* Cor de "PET CONECTA" */
+}
+
+body.dark-mode .sobre-nos__cabecalho .subtitulo {
+    color: #c0c0c0;
+}
+
+/* Conteúdo principal (História, Missão, Visão, Valores, Equipe, Agradecimento) */
+body.dark-mode .sobre-nos__conteudo h3 {
+    color: #03dac6; /* Cor de destaque para todos os subtítulos  */
+    margin-top: 1.5em; /* Garante espaçamento */
+    margin-bottom: 0.8em;
+}
+
+body.dark-mode .sobre-nos__conteudo p {
+    color: #c0c0c0; /* Cor do texto dos parágrafos */
+}
+
+body.dark-mode .sobre-nos__conteudo b {
+    color: #e0e0e0; /* texto em negrito */
+}
+
+/* Seção de História */
+body.dark-mode .sobre-nos__historia {
+    background-color: #1f1f1f; /* Fundo escuro para o bloco da história */
+    border: 1px solid #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+/* Seções de Missão e Visão */
+body.dark-mode .sobre-nos__missao-visao {
+    display: flex; 
+    flex-wrap: wrap; /* Garante que quebrem a linha em telas menores */
+    gap: 1.5em; /* Espaçamento entre os blocos */
+    margin-bottom: 1.5em;
+}
+
+body.dark-mode .sobre-nos__missao,
+body.dark-mode .sobre-nos__visao {
+    flex: 1; /* Permite que ocupem o espaço disponível */
+    min-width: 280px; /* Largura mínima */
+    background-color: #2a2a2a; /* Fundo mais escuro para Missão e Visão */
+    border: 1px solid #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 1.5em;
+}
+
+/* Seção de Valores */
+body.dark-mode .sobre-nos__valores {
+    background-color: #1f1f1f; /* Fundo escuro para a seção de valores */
+    border: 1px solid #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+body.dark-mode .sobre-nos__valores ul {
+    list-style-type: disc; /* Garante que a lista tenha marcadores */
+    color: #c0c0c0;
+    padding-left: 20px; /* Espaçamento da lista */
+}
+
+body.dark-mode .sobre-nos__valores ul li {
+    margin-bottom: 0.5em;
+    color: #03dac6;
+}
+
+body.dark-mode .sobre-nos__valores strong {
+    color: #e0e0e0; 
+}
+
+/* Seção de Equipe */
+body.dark-mode .sobre-nos__equipe {
+    background-color: #2a2a2a; 
+    border: 1px solid #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+/* Seção de Agradecimento */
+body.dark-mode .sobre-nos__agradecimento {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 1.5em;
+}
