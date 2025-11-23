@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE php>
 <php lang="pt-br">
 
@@ -13,29 +17,7 @@
 
 <body>
     <header>
-        <nav class="menu_superior">
-            <a  href="index.php"><img src="img/casa-de-animais.png"></a>
-            <a href="index.php"  id="navh1"><em>PET CONECTA</em></a>
-            
-            <ul>
-                <li ><a href="index.php">Home</a></li>
-                <li ><a href="bemestar.php">Bem-Estar Animal</a></li>
-                <li ><a href="adoção.php">Adoção/Doação</a></li>
-                <li ><a href="saiba-mais.php">Sobre nós</a></li>
-            </ul>
-            <div class="login-cadastro" id="cadastro-login">
-                <a href="login.php"><button id="btn-login-cadastro" >Login</button></a>
-                <a href="cadastro.php"><button id="btn-login-cadastro" >Cadastro</button></a>
-            </div>
-
-            <button id="toggle-dark-mode" > ◐ </button>
-
-            <!-- Informações do usuário logado (inicialmente ocultas) -->
-            <div id="user-info" class="d-none">
-                <span id="logged-in-user"></span>
-                <button class="btn btn-sm btn-outline-light ms-2" id="logout-btn">Sair</button>
-            </div>
-        </nav>
+       <?php include ('navbar.php');?>
     </header>
 
     <!-- VLibras Plugin -->

@@ -1,0 +1,46 @@
+-- Use este código se você souber o HASH da senha (Recomendado)
+-- SUBSTITUA 'HASH_CORRETO_AQUI' PELO HASH REAL
+INSERT INTO usuarios (
+    nome, email, dataNascimento, sexo, nomeMaterno,
+    CPF, celular, telefone, CEP, logradouro,
+    numero, complemento, bairro, cidade, estado,
+    login, senha
+)
+SELECT
+    'Usuário Master',
+    'master.pet@sistema.com',
+    '1970-01-01',
+    'Masculino',
+    'Mae Master',
+    '000.000.000-00',
+    '(00) 90000-0000',
+    '(00) 0000-0000',
+    '00000-000',
+    'Rua Master',
+    1,
+    'N/A',
+    'Bairro Master',
+    'Cidade Master',
+    'SP',
+    'login com 6 digitos',
+    'HASH_CORRETO_AQUI' -- ⬅️ AQUI DEVE ENTRAR O HASH DA SENHA!
+FROM DUAL
+WHERE NOT EXISTS (
+    SELECT 1 FROM usuarios WHERE login = 'login com 6 digitos'
+);
+-------------------------------------------------------------------------------------------------------
+
+HASH DE SENHA, COMO CONSEGUIR 
+
+
+<?php
+// Defina a sua senha master de 8 ou mais caracteres
+$senha_pura = 'SUA_SENHA_FORTE'; // <-- TROQUE AQUI PELA SENHA QUE DESEJA
+$hash_seguro = password_hash($senha_pura, PASSWORD_DEFAULT);
+    
+echo "O HASH SEGURO é: <strong>" . $hash_seguro . "</strong>";
+?>
+
+
+Criar uma pasta qualquer com extensão PHP, vá ao navegador, e execute, irá gerar uma hash de senha que iremos colocar no código 
+acima dentro do nosso PHPMYADMIN onde está escrito SQL, iremos ali por dentro criar o acesso do usuário master 

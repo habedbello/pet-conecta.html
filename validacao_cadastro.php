@@ -1,10 +1,62 @@
 <?php
-session_start(); // Garante que a sessão seja iniciada para acessar $_SESSION
+// Habilitar exibição de erros para debug (remover em produção)
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+
+// Função para log detalhado (definir ANTES de usar, apenas se não existir)
+if (!function_exists('logDebug')) {
+    function logDebug($mensagem, $dados = null) {
+        $logFile = __DIR__ . '/logs_cadastro.txt';
+        // Criar diretório de logs se não existir
+        $logDir = dirname($logFile);
+        if (!file_exists($logDir)) {
+            @mkdir($logDir, 0755, true);
+        }
+        $timestamp = date('Y-m-d H:i:s');
+        $logMessage = "[$timestamp] $mensagem";
+        if ($dados !== null) {
+            $logMessage .= " | Dados: " . print_r($dados, true);
+        }
+        $logMessage .= "\n";
+        @file_put_contents($logFile, $logMessage, FILE_APPEND);
+    }
+}
+
+// Tratamento de erros fatais
+register_shutdown_function(function() {
+    $error = error_get_last();
+    if ($error !== NULL && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
+        logDebug("ERRO FATAL CAPTURADO", [
+            'tipo' => $error['type'],
+            'mensagem' => $error['message'],
+            'arquivo' => $error['file'],
+            'linha' => $error['line']
+        ]);
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            $_SESSION['feedback_erro'] = "Erro fatal no servidor: " . $error['message'];
+            header("Location: cadastro.php");
+            exit();
+        }
+    }
+});
+
+try {
+    session_start(); // Garante que a sessão seja iniciada para acessar $_SESSION
+    logDebug("Sessão iniciada com sucesso");
+} catch (Exception $e) {
+    logDebug("ERRO ao iniciar sessão", ['erro' => $e->getMessage()]);
+    die("Erro ao iniciar sessão: " . $e->getMessage());
+}
 
 // Inicializa um array para armazenar os erros de validação
 $erros = [];
 // Inicializa um array para armazenar os dados válidos ou submetidos (para repopular o formulário)
 $dados = [];
+// Inicializa array global de dados (usado pela função validarCEP)
+if (!isset($GLOBALS['dados'])) {
+    $GLOBALS['dados'] = [];
+}
 
 
 
@@ -97,74 +149,135 @@ function validarCPF($cpf) {
 }
 
 /**
- * Valida o formato do telefone celular (corresponde à regex do JS: (+55)XX-XXXXXXXXX)
- * O campo no HTML usa (+55)XX-XXXXXXXXX.
+ * Valida o telefone celular - aceita qualquer número formatado
+ * Apenas verifica se não está vazio e tem formato básico válido
  * @param string $celular
  * @return string|null
  */
 function validarCelular($celular) {
-    // Regex adaptada para o formato do JS: /^\(\+55\)\d{2}-\d{8,9}$/
-    // A entrada POST é (XX) XXXXX-XXXX ou (+XX)XX-XXXXX-XXXX, dependendo de como você mascara no front-end.
-    // Usando a regex do front-end: /^\(\+55\)\d{2}-\d{8,9}$/
-    // Simplificando para 13 dígitos numéricos (DD DDDDDDDDD):
+    // Remove todos os caracteres não numéricos para verificar
     $celularLimpo = preg_replace('/[^0-9]/', '', $celular);
-    if (!preg_match('/^55\d{10,11}$/', $celularLimpo)) {
-        return "Telefone celular inválido. Formato esperado: (+55)XX-XXXXXXXXX.";
+    
+    // Verifica se está vazio
+    if (empty($celularLimpo)) {
+        return "Telefone celular é obrigatório.";
     }
+    
+    // Verifica se tem pelo menos 3 dígitos (DDD mínimo)
+    if (strlen($celularLimpo) < 3) {
+        return "Telefone celular inválido. Digite o DDD e o número.";
+    }
+    
+    // Aceita qualquer número formatado - sem validações restritivas
     return null;
 }
 
 /**
- * Valida o formato do telefone fixo (corresponde à regex do JS: (+55)XX-XXXXXXXX)
- * O campo no HTML usa (+55)XX-XXXXXXXX.
+ * Valida o telefone fixo - aceita qualquer número formatado
+ * Apenas verifica se não está vazio e tem formato básico válido
  * @param string $fixo
  * @return string|null
  */
 function validarFixo($fixo) {
-    // Simplificando para 12 dígitos numéricos (DD DDDDDDDD):
+    // Remove todos os caracteres não numéricos para verificar
     $fixoLimpo = preg_replace('/[^0-9]/', '', $fixo);
-    if (!preg_match('/^55\d{10}$/', $fixoLimpo)) {
-        return "Telefone fixo inválido. Formato esperado: (+55)XX-XXXXXXXX.";
+    
+    // Verifica se está vazio
+    if (empty($fixoLimpo)) {
+        return "Telefone fixo é obrigatório.";
     }
+    
+    // Verifica se tem pelo menos 3 dígitos (DDD mínimo)
+    if (strlen($fixoLimpo) < 3) {
+        return "Telefone fixo inválido. Digite o DDD e o número.";
+    }
+    
+    // Aceita qualquer número formatado - sem validações restritivas
     return null;
 }
 
 /**
- * Valida o formato do CEP (XXXXX-XXX) e consulta o ViaCEP.
+ * Valida o formato do CEP (aceita com ou sem hífen) e consulta o ViaCEP.
  * @param string $cep
  * @return string|null
  */
 function validarCEP($cep) {
-    if (!preg_match('/^\d{5}-\d{3}$/', $cep)) {
-        return "CEP inválido. Formato esperado: XXXXX-XXX.";
+    try {
+        // Remove caracteres não numéricos para validação
+        $cepLimpo = preg_replace('/[^0-9]/', '', $cep);
+        
+        // Verifica se está vazio
+        if (empty($cepLimpo)) {
+            return "CEP é obrigatório.";
+        }
+        
+        // Verifica se tem 8 dígitos (formato válido de CEP brasileiro)
+        if (strlen($cepLimpo) != 8) {
+            return "CEP inválido. Deve conter 8 dígitos (com ou sem hífen).";
+        }
+        
+        // Consultar a API do ViaCEP (opcional - não bloqueia se falhar)
+        if (function_exists('curl_init')) {
+            $url = "https://viacep.com.br/ws/" . $cepLimpo . "/json/";
+            
+            // Usando cURL para consulta mais robusta
+            $ch = @curl_init();
+            if ($ch !== false) {
+                @curl_setopt($ch, CURLOPT_URL, $url);
+                @curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                @curl_setopt($ch, CURLOPT_TIMEOUT, 5); // Timeout de 5 segundos
+                @curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+                @curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                $resultadoJson = @curl_exec($ch);
+                $curlError = @curl_error($ch);
+                $httpCode = @curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                @curl_close($ch);
+                
+                // Se houver erro de conexão, permite continuar (CEP será validado apenas no formato)
+                if ($curlError || $httpCode !== 200) {
+                    // Não retorna erro, apenas registra no log se possível
+                    if (function_exists('logDebug')) {
+                        @logDebug("Erro ao consultar ViaCEP", ['erro' => $curlError, 'cep' => $cepLimpo, 'http_code' => $httpCode]);
+                    }
+                    // Permite que o usuário continue - CEP válido em formato
+                    return null;
+                }
+                
+                // Tenta decodificar o JSON
+                $resultado = @json_decode($resultadoJson);
+                
+                if (json_last_error() === JSON_ERROR_NONE && is_object($resultado)) {
+                    if (isset($resultado->erro) && $resultado->erro) {
+                        // CEP não encontrado na API, mas formato é válido
+                        // Permite continuar, mas não preenche os campos automaticamente
+                        if (function_exists('logDebug')) {
+                            @logDebug("CEP não encontrado na API ViaCEP", ['cep' => $cepLimpo]);
+                        }
+                        // Não retorna erro, permite que o usuário preencha manualmente
+                    } else {
+                        // CEP encontrado - armazena os dados do ViaCEP para preencher automaticamente
+                        if (!isset($GLOBALS['dados'])) {
+                            $GLOBALS['dados'] = [];
+                        }
+                        $GLOBALS['dados']['campo_logradouro'] = isset($resultado->logradouro) ? $resultado->logradouro : '';
+                        $GLOBALS['dados']['campo_complemento'] = isset($resultado->complemento) ? $resultado->complemento : '';
+                        $GLOBALS['dados']['campo_bairro'] = isset($resultado->bairro) ? $resultado->bairro : '';
+                        $GLOBALS['dados']['campo_cidade'] = isset($resultado->localidade) ? $resultado->localidade : '';
+                        $GLOBALS['dados']['campo_uf'] = isset($resultado->uf) ? $resultado->uf : '';
+                    }
+                }
+            }
+        }
+        
+        return null;
+    } catch (Exception $e) {
+        // Se houver qualquer erro, apenas valida o formato do CEP
+        // Não bloqueia o cadastro
+        if (function_exists('logDebug')) {
+            @logDebug("Exceção em validarCEP", ['erro' => $e->getMessage(), 'cep' => $cep]);
+        }
+        return null; // Retorna null para não bloquear o cadastro
     }
-
-    $cepLimpo = preg_replace('/[^0-9]/', '', $cep);
-    
-    // Consultar a API do ViaCEP
-    $url = "https://viacep.com.br/ws/" . $cepLimpo . "/json/";
-    
-    // Usando cURL para consulta mais robusta
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $resultadoJson = curl_exec($ch);
-    curl_close($ch);
-    
-    $resultado = json_decode($resultadoJson);
-
-    if (isset($resultado->erro) && $resultado->erro) {
-        return "CEP não encontrado.";
-    }
-
-    // Armazena os dados do ViaCEP para preencher automaticamente
-    $GLOBALS['dados']['campo_logradouro'] = $resultado->logradouro ?? '';
-    $GLOBALS['dados']['campo_complemento'] = $resultado->complemento ?? '';
-    $GLOBALS['dados']['campo_bairro'] = $resultado->bairro ?? '';
-    $GLOBALS['dados']['campo_cidade'] = $resultado->localidade ?? '';
-    $GLOBALS['dados']['campo_uf'] = $resultado->uf ?? '';
-
-    return null;
 }
 
 /**
@@ -222,8 +335,10 @@ function validarConfirmacaoSenha($senha, $confirmacao) {
 
 // PROCESSAMENTO DO FORMULÁRIO
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        logDebug("=== INÍCIO DO PROCESSAMENTO DO CADASTRO ===");
+        logDebug("POST recebido", array_keys($_POST));
     
     // Função auxiliar para obter e limpar o valor do POST
     $p = function($key) {
@@ -325,6 +440,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($erros)) {
         // Se houver erros, armazena os erros e os dados POST originais (escapados)
+        logDebug("ERROS ENCONTRADOS NA VALIDAÇÃO", $erros);
         
         // Escapa e armazena TODOS os dados POST para repopular o formulário (exceto senhas)
         foreach ($_POST as $key => $value) {
@@ -341,38 +457,83 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
              $dados = array_merge($dados, $GLOBALS['dados']);
         }
 
-
         $_SESSION['erros'] = $erros;
         $_SESSION['dados'] = $dados;
         
+        logDebug("Redirecionando para cadastro.php com erros");
         header("Location: cadastro.php");
         exit();
         
     } else {
         // Se não houver erros, prepara os dados FINAIS para o banco de dados
+        logDebug("VALIDAÇÃO PASSOU - Preparando dados para inserção");
         
-        // 1. Escapa todos os campos (exceto senhas, que serão hash)
-        foreach ($_POST as $key => $value) {
-            if ($key !== 'campo_senha' && $key !== 'campo_confirma') {
-                $dados[$key] = htmlspecialchars(trim($value));
+        try {
+            // 1. Escapa todos os campos (exceto senhas, que serão hash)
+            foreach ($_POST as $key => $value) {
+                if ($key !== 'campo_senha' && $key !== 'campo_confirma') {
+                    $dados[$key] = htmlspecialchars(trim($value));
+                }
             }
-        }
-        
-        // 2. Hash da senha
-        // Use password_hash() para segurança real.
-        $dados['campo_senha'] = password_hash($p('campo_senha'), PASSWORD_DEFAULT);
-        
-        // 3. Garante o formato limpo de CPF e Telefones (para banco de dados)
-        $dados['campo_cpf'] = preg_replace('/[^0-9]/', '', $dados['campo_cpf']);
-        $dados['campo_cep'] = preg_replace('/[^0-9]/', '', $dados['campo_cep']);
-        $dados['campo_celular'] = preg_replace('/[^0-9]/', '', $dados['campo_celular']);
-        $dados['campo_fixo'] = preg_replace('/[^0-9]/', '', $dados['campo_fixo']);
-        
-        // 4. Armazena os dados validados na sessão
-        $_SESSION['dados_cadastro'] = $dados;
+            
+            // Mescla com dados do ViaCEP se disponíveis
+            if (!empty($GLOBALS['dados'])) {
+                $dados = array_merge($dados, $GLOBALS['dados']);
+            }
+            
+            // 2. Hash da senha
+            // Use password_hash() para segurança real.
+            $dados['campo_senha'] = password_hash($p('campo_senha'), PASSWORD_DEFAULT);
+            logDebug("Senha hasheada com sucesso");
+            
+            // 3. Garante o formato limpo de CPF e Telefones (para banco de dados)
+            $dados['campo_cpf'] = preg_replace('/[^0-9]/', '', $dados['campo_cpf']);
+            $dados['campo_cep'] = preg_replace('/[^0-9]/', '', $dados['campo_cep']);
+            $dados['campo_celular'] = preg_replace('/[^0-9]/', '', $dados['campo_celular']);
+            $dados['campo_fixo'] = preg_replace('/[^0-9]/', '', $dados['campo_fixo']);
+            
+            logDebug("Dados limpos e preparados", array_keys($dados));
+            logDebug("Dados completos (sem senha)", array_diff_key($dados, ['campo_senha' => '']));
+            
+            // 4. Armazena os dados validados na sessão
+            $_SESSION['dados_cadastro'] = $dados;
+            logDebug("Dados armazenados na sessão");
 
-        // 5. Inclui o arquivo de processamento do cadastro e finaliza
-        include 'processa_cadastro.php';
+            // 5. Inclui o arquivo de processamento do cadastro e finaliza
+            // Usando __DIR__ para garantir que o caminho seja sempre correto
+            $processaPath = __DIR__ . '/processa_cadastro.php';
+            if (!file_exists($processaPath)) {
+                logDebug("ERRO: Arquivo processa_cadastro.php não encontrado", ['caminho' => $processaPath]);
+                error_log("ERRO: Arquivo processa_cadastro.php não encontrado em: " . $processaPath);
+                $_SESSION['feedback_erro'] = "Erro ao processar cadastro. Arquivo não encontrado.";
+                header("Location: cadastro.php");
+                exit();
+            }
+            logDebug("Incluindo processa_cadastro.php");
+            include $processaPath;
+            exit();
+        } catch (Exception $e) {
+            logDebug("ERRO ao processar dados", [
+                'mensagem' => $e->getMessage(),
+                'arquivo' => $e->getFile(),
+                'linha' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            $_SESSION['feedback_erro'] = "Erro ao processar cadastro: " . $e->getMessage();
+            header("Location: cadastro.php");
+            exit();
+        }
+    }
+    
+    } catch (Exception $e) {
+        logDebug("ERRO GERAL no processamento POST", [
+            'mensagem' => $e->getMessage(),
+            'arquivo' => $e->getFile(),
+            'linha' => $e->getLine(),
+            'trace' => $e->getTraceAsString()
+        ]);
+        $_SESSION['feedback_erro'] = "Erro ao processar formulário: " . $e->getMessage();
+        header("Location: cadastro.php");
         exit();
     }
 

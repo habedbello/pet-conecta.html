@@ -1,0 +1,17 @@
+PROFESSOR, SEGUE ABAIXO LOGINS E SENHAS
+
+
+USUÁRIO Master
+
+
+LOGIN:   adminn
+SENHA:   adminadm
+
+
+USUÁRIO COMUM
+
+
+LOGIN:   habedb 
+SENHA:   habedbel
+
+

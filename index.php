@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html5>
 <html lang="pt-br">
 
@@ -16,32 +20,7 @@
 
 <body>
     <header>
-        <nav class="menu_superior">
-            <a class="logo animate__animated animate__zoomIn" href="index.php"><img src="img/casa-de-animais.png"></a>
-            <a href="index.php" class="animate__animated animate__zoomIn" id="navh1"><em>PET CONECTA</em></a>
-            <ul>
-                <li class="animate__animated animate__zoomIn"><a href="index.php">Home</a></li>
-                <li class="animate__animated animate__zoomIn"><a href="bemestar.php">Bem-Estar Animal</a></li>
-                <li class="animate__animated animate__zoomIn"><a href="adoção.php">Adoção/Doação</a></li>
-                <li class="animate__animated animate__zoomIn"><a href="saiba-mais.php">Sobre nós</a></li>
-            </ul>
-            <div class="login-cadastro" id="cadastro-login">
-                <a href="login.php"><button id="btn-login-cadastro"
-                        class="btn animate__animated animate__zoomIn">Login</button></a>
-                <a href="cadastro.php"><button id="btn-login-cadastro"
-                        class="animate__animated animate__zoomIn">Cadastro</button></a>
-            </div>
-            <!-- ------------------------------BOTÕES DE FUNCIONALIDADE---------------------------------------->
-            <button id="toggle-dark-mode" class="btn animate__animated animate__zoomIn"> ◐ </button>
-
-            <!-----------------------------------FINAL DOS BOTÕES----------------------------------------------->
-
-            <!-- Informações do usuário logado (inicialmente ocultas) -->
-            <div id="user-info" class="d-none">
-                <span id="logged-in-user"></span>
-                <button class="btn btn-sm btn-outline-light ms-2" id="logout-btn">Sair</button>
-            </div>
-        </nav>
+     <?php include ('navbar.php');?>
     </header>
 
     <!-- VLibras Plugin -->
@@ -117,8 +96,6 @@
     </footer>
 
     <script src="javaScript/darkmodee.js"></script>
-    <!-- JavaScript Personalizado para funcionalidades gerais e de login/logout -->
-    <script src="javaScript/main.js"></script>
     
      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>

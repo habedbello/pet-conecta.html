@@ -1,0 +1,42 @@
+# Arquivos e diretórios a ignorar no build Docker
+.git
+.gitignore
+*.md
+README.md
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+logs_cadastro.txt
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Node modules (se houver)
+node_modules/
+
+# Arquivos de teste
+teste_*.php
+ver_logs.php
+criar_tabelas.php
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+
+
+
+

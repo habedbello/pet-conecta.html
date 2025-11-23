@@ -1,0 +1,67 @@
+services:
+  # Serviço PHP/Apache
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pet-conecta-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./logs:/var/www/html/logs
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=petconecta
+      - DB_USER=root
+      - DB_PASS=rootpassword
+    networks:
+      - pet-conecta-network
+    restart: unless-stopped
+
+  # Serviço MySQL
+  db:
+    image: mysql:8.0
+    container_name: pet-conecta-db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: petconecta
+      MYSQL_USER: petuser
+      MYSQL_PASSWORD: petpassword
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - pet-conecta-network
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+
+  # Serviço phpMyAdmin (opcional - para gerenciar o banco)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    platform: linux/amd64
+    container_name: pet-conecta-phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+      MYSQL_ROOT_PASSWORD: rootpassword
+    depends_on:
+      - db
+    networks:
+      - pet-conecta-network
+    restart: unless-stopped
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  pet-conecta-network:
+    driver: bridge
+

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE php>
 <php lang="pt-br">
 <head>
@@ -10,31 +14,7 @@
 </head>
 <body>
     <header class="header1">
-        <nav class="menu_superior">
-            <a  href="index.php"><img src="img/casa-de-animais.png"></a>
-            <a href="index.php"  id="navh1"><em>PET CONECTA</em></a>
-
-
-            
-            <ul>
-                <li ><a href="index.php">Home</a></li>
-                <li ><a href="bemestar.php">Bem-Estar Animal</a></li>
-                <li ><a href="adoção.php">Adoção/Doação</a></li>
-                <li ><a href="saiba-mais.php">Sobre nós</a></li>
-            </ul>
-            <div class="login-cadastro" id="cadastro-login">
-                <a href="login.php"><button id="btn-login-cadastro">Login</button></a>
-                <a href="cadastro.php"><button id="btn-login-cadastro">Cadastro</button></a>
-            </div>
-
-            <button id="toggle-dark-mode" > ◐ </button>
-
-            <!-- Informações do usuário logado (inicialmente ocultas) -->
-            <div id="user-info" class="d-none">
-                <span id="logged-in-user"></span>
-                <button class="btn btn-sm btn-outline-light ms-2" id="logout-btn">Sair</button>
-            </div>
-        </nav>
+        <?php include ('navbar.php');?>
     </header>
 
     <!-- VLibras Plugin -->
@@ -107,7 +87,7 @@
                     <li>Após a aprovação, você poderá <strong>conhecer o animal</strong> escolhido em nosso abrigo ou em um evento de adoção.</li>
                     <li>Assinatura do <strong>Termo de Adoção Responsável</strong> e o novo membro da família estará pronto para ir para casa!</li>
                 </ol>
-                <a href="construcao.php" target="_blank" class="link-form-adocao">Preencha o Formulário de Adoção</a>
+               <a href="form_doacao.php" target="_blank" class="btn btn-primary"> 🐾 Preencha o Formulário de Adoção Agora!</a>
             </div>
         </section>
 
@@ -126,7 +106,7 @@
                     <li>Compromisso em auxiliar, se possível, na transição e adaptação do animal ao novo ambiente.</li>
                 </ul>
                 <p>Cada doação nos ajuda a diminuir o número de animais abandonados e a encontrar famílias que possam oferecer a eles uma vida digna e feliz.</p>
-                <a href="construcao.php" target="_blank" class="link-form-doacao">Quero Doar um Animal</a>
+                <a href="form_doacao.php/#form-doacao" target="_blank" class="btn btn-success">💖 Quero Doar um Animal</a>
             </div>
         </section>
     </div>
